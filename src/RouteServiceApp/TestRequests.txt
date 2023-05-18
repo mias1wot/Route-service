@@ -1,0 +1,257 @@
+This file contains test requests which is performed directly on Route Service (via Swagger).
+
+Create route:
+{
+  "extraInfo": "Це буде класно! Подорож на 20 хвилин.",
+  "seatStartNumber": 10,
+  "seatEndNumber": 15,
+  "routeLocalities": [
+    {
+      "ordinalNumber": 1,
+      "departureTime": "2023-06-18T20:45",
+      "arrivalTime": "2023-06-18T20:30",
+      "locality": {
+        "name": "Львів"
+      }
+    },
+{
+      "ordinalNumber": 2,
+      "departureTime": "2023-06-18T23:30",
+      "arrivalTime": "2023-06-18T20:55",
+      "locality": {
+        "name": "Тернопіль"
+      }
+    },
+{
+      "ordinalNumber": 3,
+      "departureTime": "2023-06-19T12:30",
+      "arrivalTime": "2023-06-19T05:45",
+      "locality": {
+        "name": "Київ"
+      }
+    }
+  ]
+}
+
+
+
+
+{
+  "extraInfo": "Подорож Україною - це прекрасно!",
+  "seatStartNumber": 1,
+  "seatEndNumber": 10,
+  "routeLocalities": [
+    {
+      "ordinalNumber": 1,
+      "departureTime": "2023-10-18T18:00",
+      "arrivalTime": "2023-10-18T10:30",
+      "locality": {
+        "name": "Львів"
+      }
+    },
+{
+      "ordinalNumber": 2,
+      "departureTime": "2023-10-18T20:00",
+      "arrivalTime": "2023-10-18T19:55",
+      "locality": {
+        "name": "Луцьк"
+      }
+    },
+{
+      "ordinalNumber": 3,
+      "departureTime": "2023-10-18T20:40",
+      "arrivalTime": "2023-10-18T20:30",
+      "locality": {
+        "name": "Рівне"
+      }
+},
+{
+      "ordinalNumber": 4,
+      "departureTime": "2023-10-19T00:40",
+      "arrivalTime": "2023-10-18T21:50",
+      "locality": {
+        "name": "Звягель"
+      }
+},
+{
+      "ordinalNumber": 5,
+      "departureTime": "2023-10-19T01:45",
+      "arrivalTime": "2023-10-19T01:30",
+      "locality": {
+        "name": "Житомир"
+      }
+},
+{
+      "ordinalNumber": 6,
+      "departureTime": "2023-10-19T04:40",
+      "arrivalTime": "2023-10-19T04:33",
+      "locality": {
+        "name": "Ірпінь"
+      }
+},
+{
+      "ordinalNumber": 7,
+      "departureTime": "2023-10-19T06:00",
+      "arrivalTime": "2023-10-19T05:20",
+      "locality": {
+        "name": "Київ"
+      }
+},
+{
+      "ordinalNumber": 8,
+      "departureTime": "2023-10-19T21:00",
+      "arrivalTime": "2023-10-19T20:30",
+      "locality": {
+        "name": "Стрий"
+      }
+    }
+  ]
+}
+
+
+
+
+{
+  "extraInfo": "Швидкий потяг.",
+  "seatStartNumber": 5,
+  "seatEndNumber": 10,
+  "routeLocalities": [
+    {
+      "ordinalNumber": 1,
+      "departureTime": "2023-10-18T16:00",
+      "arrivalTime": "2023-10-18T10:30",
+      "locality": {
+        "name": "Львів"
+      }
+    },
+{
+      "ordinalNumber": 2,
+      "departureTime": "2023-10-19T06:00",
+      "arrivalTime": "2023-10-19T05:20",
+      "locality": {
+        "name": "Київ"
+      }
+},
+{
+      "ordinalNumber": 3,
+      "departureTime": "2023-10-19T21:00",
+      "arrivalTime": "2023-10-19T15:30",
+      "locality": {
+        "name": "Стрий"
+      }
+    }
+  ]
+}
+
+
+
+
+
+Get available routes:
+{
+  "from": "Тернопіль",
+  "to": "Київ",
+  "departureTime": "2023-06-18T07:09",
+  "numberOfSeats": 3
+}
+
+{
+  "from": "Львів",
+  "to": "Тернопіль",
+  "departureTime": "2023-06-18T10:50",
+  "numberOfSeats": 3
+}
+
+
+-------
+{
+  "from": "Львів",
+  "to": "Стрий",
+  "departureTime": "2023-10-18T10:50",
+  "numberOfSeats": 3
+}
+
+
+{
+  "from": "Рівне",
+  "to": "Звягель",
+  "departureTime": "2023-10-18T00:50",
+  "numberOfSeats": 1
+}
+
+
+
+
+
+Book ride:
+{
+  "routeId": 3,
+  "from": "Тернопіль",
+  "to": "Київ",
+  "seats": [
+    10, 13, 15
+  ]
+}
+
+-----
+
+{
+  "routeId": 4,
+  "from": "Львів",
+  "to": "Стрий",
+  "seats": [
+    1, 3, 5, 6
+  ]
+}
+
+
+{
+  "routeId": 4,
+  "from": "Житомир",
+  "to": "Київ",
+  "seats": [
+    2, 4, 7, 8, 9, 10
+  ]
+}
+
+
+
+
+
+
+
+
+Update:
+{
+    "id": 3,
+    "extraInfo": "Це буде класно! Подорож на 20 хвилин.",
+    "seatStartNumber": 10,
+    "seatEndNumber": 15,
+    "routeLocalities": [
+      {
+        "ordinalNumber": 1,
+        "departureTime": "2023-06-18T20:45:00",
+        "arrivalTime": "2023-06-18T20:30:00",
+        "locality": {
+          "name": "Львів"
+        }
+      },
+      {
+        "ordinalNumber": 2,
+        "departureTime": "2023-06-18T23:30:00",
+        "arrivalTime": "2023-06-18T20:55:00",
+        "locality": {
+          "name": "Тернопіль"
+        }
+      },
+      {
+        "ordinalNumber": 3,
+        "departureTime": "2023-06-19T12:30:00",
+        "arrivalTime": "2023-06-19T06:45:00",
+        "locality": {
+          "name": "Київ"
+        }
+      }
+    ]
+  }
+
