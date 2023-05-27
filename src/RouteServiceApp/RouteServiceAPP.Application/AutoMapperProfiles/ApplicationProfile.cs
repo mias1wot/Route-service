@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookingServiceApp.API.AutoMapperProfiles
+namespace RouteServiceAPP.Application.AutoMapperProfiles
 {
 	public class ApplicationProfile : Profile
 	{

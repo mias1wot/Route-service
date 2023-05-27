@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RouteServiceAPP.Application\RouteServiceAPP.Application.csproj" />
+    <ProjectReference Include="..\RouteServiceApp.DbProvider\RouteServiceApp.DbProviderConfiguration.csproj" />
     <ProjectReference Include="..\RouteServiceAPP.Infrastructure\RouteServiceAPP.Infrastructure.csproj" />
   </ItemGroup>
 

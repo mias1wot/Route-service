@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,19 +24,37 @@ namespace RouteServiceApp.API
 
 			var webHost = CreateHostBuilder(args).Build();
 
-
-			if (reinitializeDbData)
+			using (var scope = webHost.Services.CreateScope())
 			{
-				//Drop create DB and initialize it with data
-				using (var scope = webHost.Services.CreateScope())
+				var services = scope.ServiceProvider;
+				var context = services.GetRequiredService<RouteServiceContext>();
+
+				// Create DB if it doesn't exist
+				if (!context.Database.GetService<IRelationalDatabaseCreator>().Exists())
 				{
-					var services = scope.ServiceProvider;
-					var context = services.GetRequiredService<RouteServiceContext>();
-					//RouteServiceDbInitializer.RecreateDatabase(context);
-					RouteServiceDbInitializer.ClearData(context);
-					RouteServiceDbInitializer.InitializeData(context);
+					try
+					{
+						context.Database.Migrate();
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine($"Migration has failed: {ex.Message}.");
+					}
 				}
+
+
+				// Clear and initialize data if required
+				// This in only for SQL Server!
+				if (reinitializeDbData)
+				{
+					RouteServiceDbInitializer.ClearData(context);
+					//RouteServiceDbInitializer.InitializeTestData(context); // must go after InitializeData() if required.
+				}
+
+				// Write initial required values to DB
+				RouteServiceDbInitializer.InitializeData(context);
 			}
+
 
 			
 			webHost.Run();
@@ -44,6 +65,7 @@ namespace RouteServiceApp.API
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
+					webBuilder.UseUrls("http://*:5005");
 				});
 	}
 }

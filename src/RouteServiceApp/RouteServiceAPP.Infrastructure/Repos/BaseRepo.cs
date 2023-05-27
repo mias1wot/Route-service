@@ -64,11 +64,11 @@ namespace RouteServiceAPP.Infrastructure.Repos
 
 		public async Task UpdateAsync(T entity)
 		{
-			//if (_context.Entry(entity).State == EntityState.Detached)
-			//{
-			//	_table.Attach(entity);
-			//}
-			
+			if (_context.Entry(entity).State == EntityState.Detached)
+			{
+				_table.Attach(entity);
+			}
+
 			_context.Entry(entity).State = EntityState.Modified;
 		}
 

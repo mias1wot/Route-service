@@ -31,6 +31,11 @@ namespace RouteServiceAPP.Infrastructure.DataInitialization
 			context.Localities.AddOrUpdate(locality => locality.Name, localities);
 			context.SaveChanges();
 
+		}
+
+
+		public static void InitializeTestData(RouteServiceContext context)
+		{
 			var routes = new List<Route>
 			{
 				new Route

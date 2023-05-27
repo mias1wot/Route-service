@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookingServiceApp.API.AutoMapperProfiles
+namespace RouteServiceApp.API.AutoMapperProfiles
 {
 	public class ApiProfile : Profile
 	{
@@ -39,7 +39,7 @@ namespace BookingServiceApp.API.AutoMapperProfiles
 			CreateMap<RouteDto, RouteResponse>();
 			CreateMap<GetRouteDto, GetRouteResponse>();
 			CreateMap<RouteLocalityDto, RouteLocalityResponse>();
-			
+
 		}
 	}
 }

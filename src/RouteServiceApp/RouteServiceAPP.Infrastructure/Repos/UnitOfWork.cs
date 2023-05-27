@@ -2,7 +2,6 @@
 using RouteServiceAPP.Domain.Entities;
 using RouteServiceAPP.Domain.Repos;
 using RouteServiceAPP.Infrastructure;
-using RouteServiceAPP.Infrastructure.Repos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 // For fast-replace
 // From: _.+?Repo
-namespace BookingServiceApp.Infrastructure.Repos
+namespace RouteServiceAPP.Infrastructure.Repos
 {
 	public class UnitOfWork : IDisposable, IUnitOfWork
 	{

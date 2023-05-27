@@ -1,6 +1,5 @@
 **/todo-list-app/*
 *.png
-*.yml
 *.editorconfig
 *.settings
 *.snk
@@ -26,4 +25,5 @@
 *.doc
 *.pdf
 *.bak
-
+**/dockerData/*
+*.db
